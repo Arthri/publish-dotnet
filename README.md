@@ -67,7 +67,7 @@ jobs:
 Parameters available on all or most workflows provided by the repository.
 
 ### Machine
-The workflows, by default, run on Ubuntu (22.04 as of writing). The machine that the workflows run on can be changed by using the `runs-on` input parameter.
+The workflows, by default, run on Ubuntu 24.04 (as of April 09, 2025). The machine that the workflows run on can be changed by using the `runs-on` input parameter.
 
 ### Specify Project
 The workflows, by default, builds the singular solution or project at the root of the repository. If there are multiple solutions and/or projects at the root of the repository, a solution or a project must be specified explicitly using the `project-path` input parameter.
@@ -171,7 +171,7 @@ The workflow assumes that it is triggered by a release event. If that is not the
 The workflow requires an environment named `NuGet (Stable)` with a secret named `NUGET_API_KEY` containing the API key used to publish packages to NuGet. The following is a list of steps to create the environment.
 
 > [!NOTE]
-> Environments are not, as of writing (November 11, 2024), available on private repositories under the free plan. https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment
+> Environments are not available on private repositories (as of April 09, 2025) under the free plan. https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-deployments/managing-environments-for-deployment
 
 1. Go to the repository's settings tab.
 1. Navigate to `Environments` under the `Code and automation` section.
@@ -181,7 +181,7 @@ The workflow requires an environment named `NuGet (Stable)` with a secret named 
 1. Configure environment as appropriate.
 
 ### Set Release Notes or Changelog
-NuGet supports release notes (for example, on [Belp.Build.Packinf@0.6.0](https://www.nuget.org/packages/Belp.Build.Packinf/0.6.0#releasenotes-body-tab)), a tab dedicated to the changes introduced in a given version. By default, the workflow doesn't build packages with release notes, but it can be configured to.
+NuGet supports release notes (for an example, see [Belp.Build.Packinf@0.6.0](https://www.nuget.org/packages/Belp.Build.Packinf/0.6.0#releasenotes-body-tab)), a tab dedicated to the changes introduced in a given version. By default, the workflow doesn't build packages with release notes, but it can be configured to.
 ```yml
 jobs:
   publish-nuget:
