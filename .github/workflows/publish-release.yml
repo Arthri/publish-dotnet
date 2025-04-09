@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       runs-on:
-        default: ubuntu-22.04
+        default: ubuntu-24.04
         description: The machine to run the jobs on.
         required: false
         type: string
