@@ -50,9 +50,9 @@ defaults:
 
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
-  DOTNET_GENERATE_ASPNET_CERTIFICATE: 'false'
-  DOTNET_NOLOGO: 'true'
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 'true'
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: "false"
+  DOTNET_NOLOGO: "true"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
 
 jobs:
   publish-nuget:
@@ -62,14 +62,16 @@ jobs:
 
     runs-on: ${{ inputs.runs-on }}
     timeout-minutes: 2
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup .NET
         id: setup-dotnet
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
 
       - name: Setup Environment
         env:
@@ -114,7 +116,7 @@ jobs:
             <Error Text="%24(GITHUB_OUTPUT) is undefined" Condition="'$(GITHUB_OUTPUT)' == ''" />
             <WriteLinesToFile File="$(GITHUB_OUTPUT)" Lines="package-output-path=$(PackageOutputAbsolutePath);package-version-url=https://www.nuget.org/packages/$(PackageId)/$(PackageVersion)" />
           </Target>
-        
+
           <!-- Prevent _ExposeOutputToCI from propagating to project references -->
           <ItemGroup>
             <ProjectReference Update="@(ProjectReference)" UndefineProperties="%(ProjectReference.UndefineProperties);_ExposeOutputToCI" />

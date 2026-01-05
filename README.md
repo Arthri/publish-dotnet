@@ -38,6 +38,8 @@ on:
 jobs:
   publish-nuget:
     uses: Arthri/publish-dotnet/.github/workflows/publish-nuget.yml@v2
+    permissions:
+      contents: read
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 ```
@@ -59,6 +61,8 @@ jobs:
 
   publish-nuget:
     uses: Arthri/publish-dotnet/.github/workflows/publish-nuget.yml@v2
+    permissions:
+      contents: read
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 ```
