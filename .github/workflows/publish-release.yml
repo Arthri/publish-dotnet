@@ -51,9 +51,9 @@ defaults:
 
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
-  DOTNET_GENERATE_ASPNET_CERTIFICATE: 'false'
-  DOTNET_NOLOGO: 'true'
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 'true'
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: "false"
+  DOTNET_NOLOGO: "true"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
 
 jobs:
   publish-release:
@@ -143,6 +143,8 @@ jobs:
           mapfile -t projects < ./outputs.txt
           shopt -s nullglob dotglob
           for project in "${projects[@]}" ; do
+            export -n PROJECT_NAME PROJECT_VERSION PROJECT_INFORMATIONAL_VERSION
+
             project="${project%$'\r'}"
             DATA_ENTRY=($project)
 
